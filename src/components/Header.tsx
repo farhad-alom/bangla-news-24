@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import AuthButtons from './AuthButtons';
 import NavLinks from './Navlinks';
 
 const Header = () => {
@@ -31,10 +32,7 @@ const Header = () => {
                 </div>
 
                 {/* সাইন ইন ও সাইন আপ বাটন */}
-                <div className='flex gap-3 justify-center md:justify-end'>
-                    <button className='text-gray-700 hover:text-black text-sm font-medium px-3 py-1.5'>সাইন ইন</button>
-                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-1.5 rounded transition-colors'>সাইন আপ</button>
-                </div>
+                <AuthButtons />
 
                 {/* নেভবার বা ক্যাটাগরি লিংকস */}
                 <div className="col-span-1 md:col-span-3 mt-2">

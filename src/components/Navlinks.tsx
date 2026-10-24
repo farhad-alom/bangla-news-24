@@ -31,10 +31,10 @@ const Navlinks = async () => {
             <Link href={'/'} className="hover:text-red-600 transition-colors">হোম</Link>
 
             {filteredNavs.length > 0 ? (
-                filteredNavs.map((n, i) => (
+                filteredNavs.map((n) => (
                     <Link 
-                        key={i} 
-                        href={`/category/${n.slug}`}
+                        key={n.slug} 
+                        href={`/category/${encodeURIComponent(n.slug)}`}
                         className="hover:text-red-600 transition-colors"
                     >
                         {n.title}

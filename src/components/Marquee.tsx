@@ -1,9 +1,10 @@
-import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
+import ArticleLink from "./ArticleLink";
 
 interface HeadLineItem {
-    id: string;
+    id?: string;
+    link?: string | null;
     title: string;
 }
 
@@ -34,16 +35,15 @@ const Marquee = async () => {
                 {/* মারকি টেক্সট ও লিংক */}
                 <div className="flex-1 overflow-hidden ml-2">
                     <MarqueeText className="py-1 flex items-center" direction="right" duration={10}>
-                        {headlines.map((h) => (
-                            <Link
-
-                                key={h.id}
-                                href={`/news/${h.id}`}
+                        {headlines.map((h, index) => (
+                            <ArticleLink
+                                key={h.id ?? index}
+                                item={h}
                                 className="hover:underline hover:text-yellow-200 cursor-pointer inline-flex items-center mx-4 transition-colors"
                             >
                                 <span>{h.title}</span>
                                 <span className="mx-5 text-yellow-300">•</span>
-                            </Link>
+                            </ArticleLink>
                         ))}
                     </MarqueeText>
                 </div>

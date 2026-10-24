@@ -9,7 +9,7 @@ interface News {
     category: string;
     imageUrl?: string;
     imageAlt?: string;
-    [key: string]: any; // অতিরিক্ত প্রপার্টি হ্যান্ডেল করার জন্য
+    [key: string]: unknown; // অতিরিক্ত প্রপার্টি হ্যান্ডেল করার জন্য
 }
 
 const CategoryNews = async ({ params }: { params: Promise<{ categoryId: string }> }) => {
@@ -20,7 +20,9 @@ const CategoryNews = async ({ params }: { params: Promise<{ categoryId: string }
 
     // ২. সঠিক এপিআই এন্ডপয়েন্ট ব্যবহার করা (যদি আগেরটি সঠিক হয়ে থাকে)
     try {
-        const res = await fetch(`https://news-api-v2.vercel.app/api/news/category/${categoryId}`);
+        const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`, {
+            cache: "no-store",
+        });
 
         if (res.ok) {
             const data = await res.json();

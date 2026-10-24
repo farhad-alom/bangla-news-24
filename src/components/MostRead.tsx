@@ -1,7 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
+import ArticleLink from './ArticleLink';
+
 interface NewsItem {
-    id: string;
+    id?: string;
+    link?: string | null;
     title: string;
     slug?: string;
 }
@@ -35,23 +37,23 @@ const MostRead = async () => {
                             key={news.id || index}
                             className="flex items-start gap-3 py-3 group cursor-pointer"
                         >
-                            {/* সিরিয়াল নাম্বার */}
+                            {/* সিরিয়াল নাম্বার */}
                             <span className="flex shrink-0 text-base font-bold text-red-500 w-5">
                                 {index + 1}.
                             </span>
 
                             {/* খবরের শিরোনাম */}
-                           <Link href={`/news/${news.id}`}>
+                            <ArticleLink item={news} className="min-w-0">
                                 <p className="text-sm leading-snug text-gray-700 group-hover:text-red-600 transition-colors line-clamp-2 hover:underline">
-                                {news.title}
-                            </p>
-                           </Link>
+                                    {news.title}
+                                </p>
+                            </ArticleLink>
                         </div>
                     ))}
                 </div>
             ) : (
                 <p className="py-4 text-sm text-gray-400 text-center">
-                    এই মুহূর্তে সর্বাধিক পঠিত খবর পাওয়া যাচ্ছে না।
+                    এই মুহূর্তে সর্বাধিক পঠিত খবর পাওয়া যাচ্ছে না।
                 </p>
             )}
         </div>
